@@ -1,0 +1,14 @@
+#!/usr/bin/python
+
+import os;
+import sys;
+
+fullPath = sys.argv[1].split("/");
+execPath = "";
+for node in fullPath[0:len(fullPath) - 1]:
+    execPath += node + "/";
+
+if (execPath != ""):
+    os.chdir(execPath);
+
+os.execv(fullPath[len(fullPath) - 1], sys.argv[2:len(sys.argv)]);
