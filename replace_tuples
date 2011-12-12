@@ -1,0 +1,14 @@
+#!/usr/bin/python
+import re;
+import sys;
+
+correct_values_file = open(sys.argv[1]);
+config_file = open("vnode/src/vnode.app.src");
+config_file_content = config_file.read();
+tuples_to_replace = correct_values_file.readlines();
+for replacement in tuples_to_replace:
+    tokenized_replacement = replacement.split("!");
+    regular_expression = re.compile("\{" + tokenized_replacement[0] + ", .+\},");
+    config_file_content = re.sub(regular_expression, "{"+tokenized_replacement[0] + ", " + tokenized_replacement[1]+"},", config_file_content);
+
+print config_file_content;
