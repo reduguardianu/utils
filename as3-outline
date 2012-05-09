@@ -1,0 +1,2 @@
+#!/bin/sh
+grep -rnH "function" $1 | sed 's/:[^0-9]*function/:/' | sed 's/\/.*\///'
