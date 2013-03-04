@@ -1,0 +1,2 @@
+#!/bin/sh
+wget -qO- http://whatthecommit.com/ | sed -nr 's/<p>(.*)/\1/p'
